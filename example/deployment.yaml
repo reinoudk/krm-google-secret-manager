@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: example
+  name: example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example
+  template:
+    metadata:
+      labels:
+        app: example
+    spec:
+      containers:
+      - image: example
+        name: example
+        resources:
+          requests:
+            cpu: 10m
+            memory: 64mi
+          limits:
+            cpu: 100m
+            memory: 128mi
+        env:
+          - name: EXAMPLE
+            valueFrom:
+              secretKeyRef:
+                key: example
