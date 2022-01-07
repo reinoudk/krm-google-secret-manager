@@ -1,6 +1,0 @@
-
-resources:
-  - "deployment.yaml"
-
-generators:
-  - google-managed-secret.yaml

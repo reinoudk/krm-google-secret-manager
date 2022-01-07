@@ -1,17 +1,15 @@
-TAG ?= v0.1.0-local
+default: build
 
-default: build-docker
-
-# Build docker image
-build-docker:
-	docker build -t ghcr.io/reinoudk/krm-google-secret-manager:$(TAG) .
+# Build a local binary
+build:
+	CGO_ENABLED=0 go build -o build/krm-google-secret-manager
 
 # Run example
-example:
-	kubectl kustomize --enable-alpha-plugins example
+example: build
+	kustomize build --enable-alpha-plugins --enable-exec examples/exec
 
 # Generate Dockerfile
 gen:
 	go run ./main.go gen ./
 
-.PHONY: example
+.PHONY: example build
