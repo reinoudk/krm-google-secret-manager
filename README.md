@@ -6,7 +6,7 @@ that generates Kubernetes Secrets from Google Secret Manager secret versions.
 ## Usage
 
 Due to [mounting issues](https://github.com/kubernetes-sigs/kustomize/issues/4290) with containerized
-functions, the generator should be run as an exec function. The Google credentials for fetching the
+functions, the generator should be run as an exec function (for now). The Google credentials for fetching the
 secret version are found using [Application Default Credentials](https://cloud.google.com/docs/authentication/production#automatically). 
 
 ```yaml
